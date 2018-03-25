@@ -2,6 +2,7 @@ package com.example.pfranccino.trainapp
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,6 +22,14 @@ class MainActivity : AppCompatActivity() {
          startActivity(this ,SeconActivity::class.java)
      }
 
+
+     buttonCall.setOnClickListener {
+
+        makeCall()
+
+     }
+
+
     }
 
     fun startActivity(activity : Activity, seconActivity: Class<*> ) {
@@ -32,6 +41,13 @@ class MainActivity : AppCompatActivity() {
         activity.startActivity(intent)
 
 
+    }
+
+    fun makeCall(){
+
+        val numberCall = editText2.text.toString()
+        val intentCall = Intent(Intent.ACTION_DIAL , Uri.parse("tel:$numberCall"))
+        startActivity(intentCall)
     }
 
 }
